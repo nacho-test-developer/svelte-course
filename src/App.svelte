@@ -8,9 +8,17 @@
   function changeName() {
     name = "Max";
   }
+  function inputName(event) {
+    const enteredValue = event.target.value;
+    name = enteredValue;
+  }
 
   // Reactive variable
   $: nameToUpperCase = name.toUpperCase();
+  $: console.log(name)
+  $: if (name == "Max") {
+    age = 40
+  }
 </script>
 
 <style>
@@ -45,4 +53,7 @@
 
   <button on:click={increment}>Increment</button>
   <button on:click={changeName}>Change name</button>
+
+  <input type="text" bind:value={name}>
+  <input type="text" value={name} on:input={inputName}>
 </main>
